@@ -1,0 +1,25 @@
+﻿<div class="text-center">
+    <h1 class="display-4">Update user</h1>
+
+
+    <div class="panel panel-primary">
+
+        <div class="panel-body">
+            @using (Html.BeginForm("Add", "Flag", FormMethod.Post))
+            {
+
+                <div class="form-group">
+                    @Html.Label("Country Code")
+                    @Html.TextBox("Code")
+                </div>
+
+                <div class="form-group">  
+                   <input type="file" name="FlagFile"/>
+                </div>  
+
+                <input type="submit" value="Submit" />
+            }
+        </div>
+    </div>
+</div>
+

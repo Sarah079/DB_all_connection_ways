@@ -1,0 +1,93 @@
+﻿@model CUD272ClassTutorial.Models.MainDataViewModel;
+<div class="text-center">
+
+
+    <ul class="list-group">
+
+        <!--The following is for displaying the sports fans-->
+        <li class="list-group-item">
+            <h1 class="display-4">Sport fans</h1>
+            @if (!Model.Persons.Any())
+            {
+                <h2>No sports fans at the moment</h2>
+            }
+            else
+            {
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Team</th>
+                            <th scope="col">First</th>
+                            <th scope="col">Last</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var someUser in Model.Persons)
+                        {
+                            <tr>
+                                <th scope="row">
+                                    <img src="/Home/GetImage?countryCode=za">
+                                </th>
+                                <td>@someUser.Person.Name</td>
+                                <td>@someUser.Person.Surname</td>
+                                <td>
+                                    @Html.ActionLink("Update", "Update", "Home", new { id = someUser.Person.ID, type = "Fan" }, htmlAttributes: new { @class = "btn btn-primary" })
+                                    @Html.ActionLink("Delete", "Delete", "Home", new { id = someUser.Person.ID, type = "Fan" }, htmlAttributes: new { @class = "btn btn-danger" })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+
+        </li>
+
+
+        <!--The teams will be shown below-->
+        <li class="list-group-item">
+
+            <h1 class="display-4">Soccer teams</h1>
+
+            @if (!Model.Teams.Any())
+            {
+                <h2>No teams at the moment</h2>
+            }
+            else
+            {
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Country</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var someTeam in Model.Teams)
+                        {
+                        <tr>
+                            <th scope="row">
+                                @someTeam.ID
+                            </th>
+                            @*<td>@someTeam.Name</td>*@
+                            <td><a href="@someTeam.Website">@someTeam.Name</a></td>
+                            <td>@someTeam.CountryCode</td>
+                            <td>
+                                @Html.ActionLink("Update", "Update", "Home", new { id = someTeam.ID, type = "Team" }, htmlAttributes: new { @class = "btn btn-primary" })
+                                @Html.ActionLink("Delete", "Delete", "Home", new { id = someTeam.ID, type = "Team" }, htmlAttributes: new { @class = "btn btn-danger" })
+                                @Html.ActionLink("Details", "TeamData", "Home", new { id = someTeam.ID }, htmlAttributes: new { @class = "btn btn-success" })
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+
+        </li>
+
+    </ul>
+
+
+</div>

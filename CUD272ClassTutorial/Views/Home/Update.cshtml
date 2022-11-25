@@ -1,0 +1,56 @@
+﻿@model CUD272ClassTutorial.Models.EntityUpdateViewModel
+
+<div class="text-center">
+    <h1 class="display-4">Update user</h1>
+
+
+    <div class="panel panel-primary">
+
+        @if (Model.Person != null)
+        {
+            <div class="panel-body">
+                @using (Html.BeginForm("UpdatePerson", "Home", FormMethod.Post))
+                {
+
+                    <div class="form-group">
+                        @Html.HiddenFor(viewmodel => viewmodel.Person.FavTeamId)
+                        @Html.LabelFor(viewmodel => viewmodel.Person.Name, new { @class = "control-label col-md-2" })
+                        @Html.TextBoxFor(viewmodel => viewmodel.Person.Name)
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(viewmodel => viewmodel.Person.Surname, new { @class = "control-label col-md-2" })
+                        @Html.TextBoxFor(viewmodel => viewmodel.Person.Surname)
+                    </div>
+                    <input type="submit" value="Submit" />
+                }
+            </div>
+        }
+        else if (Model.Team != null)
+        {
+                <div class="panel-body">
+                    @using (Html.BeginForm("UpdateTeam", "Home", FormMethod.Post))
+                    {
+
+                    <div class="form-group">
+                        @Html.HiddenFor(viewmodel => viewmodel.Team.ID)
+                        @Html.HiddenFor(viewmodel => viewmodel.Team.CountryCode)
+                        @Html.LabelFor(viewmodel => viewmodel.Team.Name, new { @class = "control-label col-md-2" })
+                        @Html.TextBoxFor(viewmodel => viewmodel.Team.Name)
+                    </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(viewmodel => viewmodel.Team.Website, new { @class = "control-label col-md-2" })
+                            @Html.TextBoxFor(viewmodel => viewmodel.Team.Website)
+                        </div>
+                        <input type="submit" value="Submit" />
+                    }
+                </div>
+        }
+
+
+    </div>
+</div>
+
+
+
